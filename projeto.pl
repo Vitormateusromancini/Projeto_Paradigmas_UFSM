@@ -1,12 +1,5 @@
 :- use_module(library(random)).
 
-% Defina sua base de dados de filmes e livros aqui
-% Exemplo:
-% filme("Título", "Gênero").
-% livro("Título", "Gênero").
-
-% Base de dados de filmes e livros
-% Base de dados de filmes em português
 film("007: Cassino Royale", "Ação").
 filme("Cowboys & Aliens", "Ação").
 filme("Prenda-me se For Capaz", "Crime").
