@@ -79,7 +79,7 @@ gerarRecomendacaoLivro(Preferencia, Livros, Titulo, Genero) :-
 gerarRecomendacaoLivro(_, _, "Não encontramos nenhuma recomendação de livro com base no gênero de sua preferência.", "").
 ```
 
-Esta parte é parecida com o código discutido acima, a diferença é que gera uma recomendação de livro.
+Esta parte é parecida com o código discutido a cima, a diferença é que gera uma recomendação de livro.
 
 ```Prolog
 filtrarFilmes(Preferencia, Filmes, FilmesFiltrados) :-
@@ -100,3 +100,43 @@ O include/3 é um predicado embutido do Prolog que seleciona elementos de uma li
 ```Prolog
 filmePertenceAoGenero(Preferencia, (_, Genero)) :-
 ```
+Nesta regra verifica se um filme, representado como uma tupla (_, Genero), pertence ao gênero de preferência do usuário
+```Prolog
+downcase_atom(Genero, GeneroLowerCase),
+downcase_atom(Preferencia, PreferenciaLowerCase),
+```
+A função downcase_atom é usada para converter tanto o Genero quanto o Preferencia em letras minúsculas, tornando a comparação de gêneros case-insensitive.
+```Prolog
+sub_atom(GeneroLowerCase, _, _, _, PreferenciaLowerCase).
+```
+A função sub_atom é usado para verificar se o Genero contém o Preferencia. Se a preferência estiver contida no gênero, a regra é verdadeira.
+```Prolog
+filtrarLivros(Preferencia, Livros, LivrosFiltrados) :-
+    include(livroPertenceAoGenero(Preferencia), Livros, LivrosFiltrados).
+
+livroPertenceAoGenero(Preferencia, (_, Genero)) :-
+    downcase_atom(Genero, GeneroLowerCase),
+    downcase_atom(Preferencia, PreferenciaLowerCase),
+    sub_atom(GeneroLowerCase, _, _, _, PreferenciaLowerCase).
+```
+Nesta parte do código ocorre a filtragem de Livros com base na preferência do usuário igualmente ao código discutido a cima. 
+```Prolog
+main :-
+    write("Bem-vindo ao sistema de recomendação de filmes e livros!"), nl,
+    write("Por favor, insira o gênero de filme ou livro que você deseja:"), nl,
+    read_line_to_string(user_input, Genero),
+    write("Você deseja uma recomendação de filme (F) ou livro (L)?"), nl,
+    read_line_to_string(user_input, Escolha),
+    gerarRecomendacao(Genero, Escolha).
+
+:- initialization main.
+
+```
+
+Aqui está a parte do código principal do programa main e implementa o ponto de entrada principal do programa e é responsável por interagir com o usuário, coletar suas preferências e gerar recomendações com base nessas preferências. Ele possui os write que escrevem as mensagens ao usuário.  Possui os read_line_to_string(user_input, Genero) e read_line_to_string(user_input, Escolha) que coleta osvalores de entrada de genero e escolha (filme (F) ou livro (L)). 
+
+Por último temos gerarRecomendacao/2 é chamada com base nas preferências coletadas (Genero e Escolha), e o processo de geração de recomendações começa.
+```Prolog
+:- initialization main.
+```
+É responsável por iniciar o programa.
