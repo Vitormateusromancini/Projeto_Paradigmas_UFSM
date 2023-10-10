@@ -58,3 +58,45 @@ gerarRecomendacao(_, _) :-
     write("Escolha inválida."), nl.
 ```
 Neste caso é quando o usuário escolher algo diferente de "F" ou "L" como tipo de recomendação, a regra "Escolha inválida." será escrita na saída.
+```Prolog
+gerarRecomendacaoFilme(Preferencia, Filmes, Titulo, Genero) :-
+    filtrarFilmes(Preferencia, Filmes, FilmesFiltrados),
+    random_member((Titulo, Genero), FilmesFiltrados).
+gerarRecomendacaoFilme(_, _, "Não encontramos nenhuma recomendação de filme com base no gênero de sua preferência.", "").
+
+```
+Nesta parte vai ser gerada as recomendações de filmes com base nas preferências do usuário com a regra gerarRecomendacaoFilme tendo a responsabilidade de gerar uma recomendação de filme com os argumentos preferencia, filme que é a lista de todos os filmes disponíveis na base de dados e Titulo e Genero que são as variáveis que armazenam o título e o gênero do filme recomendado, respectivamente.
+
+
+--------------escrever mais esta parte ---------------------
+
+
+```Prolog
+gerarRecomendacaoLivro(Preferencia, Livros, Titulo, Genero) :-
+    filtrarLivros(Preferencia, Livros, LivrosFiltrados),
+    random_member((Titulo, Genero), LivrosFiltrados).
+
+gerarRecomendacaoLivro(_, _, "Não encontramos nenhuma recomendação de livro com base no gênero de sua preferência.", "").
+```
+
+Esta parte é parecida com o código discutido acima, a diferença é que gera uma recomendação de livro.
+
+```Prolog
+filtrarFilmes(Preferencia, Filmes, FilmesFiltrados) :-
+    include(filmePertenceAoGenero(Preferencia), Filmes, FilmesFiltrados).
+
+filmePertenceAoGenero(Preferencia, (_, Genero)) :-
+    downcase_atom(Genero, GeneroLowerCase),
+    downcase_atom(Preferencia, PreferenciaLowerCase),
+    sub_atom(GeneroLowerCase, _, _, _, PreferenciaLowerCase).
+```
+
+Nesta parte do código ocorre a filtragem de filmes com base na preferência do usuário com a regra filtrarFilmes responsável por filtrar esses filmes com seus argumentos sendo Preferencia, Filmes e FilmesFiltrados que será a lista resultante dos filmes que se encaixam na preferência do usuário.
+
+```Prolog
+include(filmePertenceAoGenero(Preferencia), Filmes, FilmesFiltrados).
+```
+O include/3 é um predicado embutido do Prolog que seleciona elementos de uma lista que satisfazem uma determinada condição, neste caso, a condição é definida pela regra filmePertenceAoGenero(Preferencia), além de FilmesFiltrados conterá todos os filmes da lista Filmes para os quais a regra filmePertenceAoGenero(Preferencia) seja verdadeira.
+```Prolog
+filmePertenceAoGenero(Preferencia, (_, Genero)) :-
+```
