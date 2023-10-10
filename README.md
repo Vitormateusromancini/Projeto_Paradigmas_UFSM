@@ -144,6 +144,7 @@ Por último temos gerarRecomendacao/2 é chamada com base nas preferências cole
 A linguagem prolog possui esta facilidade quanto a questão de mexer com base de dados com sua lógica de predicados. 
 
 As referencias para este trabalho foram: 
-https://www.ime.usp.br/~slago/slago-prolog.pdf
-anotações da professora 
+- USP - PROLOG: https://www.ime.usp.br/~slago/slago-prolog.pdf
+- anotações da professora sobre programação Prolog
+- MC346 - Paradigmas de programação Prolog - UNICAMP: https://www.ic.unicamp.br/~meidanis/courses/mc346/2017s2/prolog/apostila-prolog.pdf
 
