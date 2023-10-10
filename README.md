@@ -140,3 +140,10 @@ Por último temos gerarRecomendacao/2 é chamada com base nas preferências cole
 :- initialization main.
 ```
 É responsável por iniciar o programa.
+
+A linguagem prolog possui esta facilidade quanto a questão de mexer com base de dados com sua lógica de predicados. 
+
+As referencias para este trabalho foram: 
+https://www.ime.usp.br/~slago/slago-prolog.pdf
+anotações da professora 
+
