@@ -1,6 +1,7 @@
 # Projeto_Paradigmas_UFSM
 
 O seguinte projeto é um trabalho da disciplina de paradgmas de programação na Universidade Federal de Santa Maria, o qual os discentes tinham que escolher um tema de projeto e uma linguagem de programação. A proposta de produção individual será de um Mini Banco de dados de Livros e Filmes que recomendará entre um filme ou um livro para o usuário e a linguagem utilizada será Prolog. A partir de agora será explicado o código realizado pelo aluno Vitor Mateus Romancini do Amaral.
+Link para o screencast: https://www.loom.com/share/26e85908136e4669987ee40d3c1bba26?sid=54b0a613-df34-4ef9-8e67-460facf92c06
 
 ```Prolog
 :- use_module(library(random)).
