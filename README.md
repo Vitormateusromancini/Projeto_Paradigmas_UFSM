@@ -5,7 +5,7 @@ O seguinte projeto é um trabalho da disciplina de paradgmas de programação na
 ```Prolog
 :- use_module(library(random)).
 ```
-Essa linha é uma diretiva é uma diretiva em Prolog que indica ao interpretador SWI-Prolog para carregar o módulo random da biblioteca padrão (library(random)). Isso é feito para que você possa usar as funções e predicados fornecidos por esse módulo que neste caso  fornece funcionalidades relacionadas à geração de números aleatórios como exemplo random/1, que gera um número aleatório, e random_permutation/2, que gera uma permutação aleatória de uma lista.
+Essa linha é uma diretiva em Prolog que indica ao interpretador SWI-Prolog para carregar o módulo random da biblioteca padrão (library(random)). Isso é feito para que você possa usar as funções e predicados fornecidos por esse módulo que neste caso  fornece funcionalidades relacionadas à geração de números aleatórios como exemplo random/1, que gera um número aleatório, e random_permutation/2, que gera uma permutação aleatória de uma lista.
 ```Prolog
 film("007: Cassino Royale", "Ação").
 filme("Cowboys & Aliens", "Ação").
@@ -42,7 +42,7 @@ Chama outra regra chamada gerarRecomendacaoFilme com os argumentos Preferencia, 
     write("Título: "), write(Titulo), nl,
     write("Gênero: "), write(Genero), nl.
 ```
-Nesta parte o código Escreve "Recomendação:" seguido de uma nova linha na saída, além de "Título:" seguido do título do filme e, em seguida, uma nova linha na saída e "Gênero:" seguido do gênero do filme e, em seguida, uma nova linha na saída.
+Nesta parte o código escreve "Recomendação:" seguido de uma nova linha na saída, além de "Título:" seguido do título do filme e, em seguida, uma nova linha na saída e "Gênero:" seguido do gênero do filme e, em seguida, uma nova linha na saída.
 
 ```Prolog
 gerarRecomendacao(Preferencia, "L") :-
@@ -66,10 +66,12 @@ gerarRecomendacaoFilme(_, _, "Não encontramos nenhuma recomendação de filme c
 
 ```
 Nesta parte vai ser gerada as recomendações de filmes com base nas preferências do usuário com a regra gerarRecomendacaoFilme tendo a responsabilidade de gerar uma recomendação de filme com os argumentos preferencia, filme que é a lista de todos os filmes disponíveis na base de dados e Titulo e Genero que são as variáveis que armazenam o título e o gênero do filme recomendado, respectivamente.
-
-
---------------escrever mais esta parte ---------------------
-
+Logo na segunda linha filtrarFilmes(Preferencia, Filmes, FilmesFiltrados)  filtra os filmes na lista Filmes com base na preferência. Isso significa que apenas os filmes que correspondem à preferência especificada serão selecionados, portanto o resultado desse filtro é armazenado em FilmesFiltrados.
+```Prolog
+random_member((Titulo, Genero), FilmesFiltrados) 
+```
+É um predicado que seleciona aleatoriamente um elemento da lista FilmesFiltrados e o unifica com (Titulo, Genero).
+A última linha é uma regra de fallback, pois se não forem encontrados filmes que correspondam à preferência, essa regra é usada para gerar uma mensagem de "Não foram encontradas recomendações" em Titulo e uma string vazia em Genero.
 
 ```Prolog
 gerarRecomendacaoLivro(Preferencia, Livros, Titulo, Genero) :-
